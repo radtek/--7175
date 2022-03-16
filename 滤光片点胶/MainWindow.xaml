@@ -1,0 +1,22 @@
+﻿<Window x:Class="滤光片点胶.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:滤光片点胶"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        WindowStyle="None"
+        WindowState="Maximized"
+        Height="450" 
+        Width="800">
+    <Viewbox>
+        <DockPanel Height="450" Width="800">
+            <local:DeveloperCtrl DockPanel.Dock="Right" Width="200"/>
+
+            <TextBlock DockPanel.Dock="Bottom" Background="Gray" Height="100" Margin="5"/>
+
+            <Grid x:Name="grid" Margin="5" Tag="{Binding SeletedCam,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        </DockPanel>
+    </Viewbox>
+</Window>

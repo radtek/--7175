@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="滤光片点胶.CellPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:local="clr-namespace:滤光片点胶"
+             mc:Ignorable="d" 
+             BorderThickness="1" BorderBrush="Silver">
+    <Grid>
+        <Image Name="panel"
+               MouseEnter="ImageViewer_MouseEnter"
+               MouseLeave="ImageViewer_MouseLeave"
+               MouseDown="ImageViewer_MouseDown"
+               SizeChanged="Panel_SizeChanged"
+               Source="{Binding ImSrc_test ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <hc:Magnifier.Instance>
+                <hc:Magnifier Scale="6" 
+                              HorizontalOffset="-16" 
+                              VerticalOffset="-16" 
+                              Visibility="Visible"/>
+            </hc:Magnifier.Instance>
+        </Image>
+    </Grid>
+</UserControl>
