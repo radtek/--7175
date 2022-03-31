@@ -1,0 +1,221 @@
+﻿<UserControl x:Class="滤光片点胶._7175_Alg_1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:local="clr-namespace:滤光片点胶"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Viewbox>
+        <ScrollViewer Height="300" Width="300">
+            <StackPanel>
+
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="画面显示" Grid.Column="0" VerticalAlignment="Center"/>
+
+                    <ComboBox Grid.Column="1"
+                          SelectedIndex="{Binding camParamViewModel.ShowMode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+                        <ComboBoxItem Content="原图显示" />
+                        <ComboBoxItem Content="定位画面" />
+                        <ComboBoxItem Content="脏污类型1" />
+                        <ComboBoxItem Content="脏污类型2" />
+                    </ComboBox>
+                </Grid>
+                
+                <TabControl>
+                    <TabItem Header="定位">
+                        <StackPanel>
+                            
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="灰度阈值" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:NumericUpDown Grid.Column="1" 
+                                                  Minimum="0" 
+                                                  Maximum="255"
+                                                  Value="{Binding camParamViewModel.LocThresh,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="半径范围" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:RangeSlider Grid.Column="1" 
+                                                hc:TipElement.Visibility="Visible" 
+                                                hc:TipElement.Placement="Top" 
+                                                hc:TipElement.StringFormat="#0" 
+                                                VerticalAlignment="Center"
+                                                Minimum="0" 
+                                                Maximum="3000"
+                                                ValueStart="{Binding camParamViewModel.MinRadius,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                ValueEnd="{Binding camParamViewModel.MaxRadius,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+                    </TabItem>
+
+                    <TabItem Header="检测区域">
+                        <StackPanel>
+
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="镜片大小" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:NumericUpDown Grid.Column="1" 
+                                                  Minimum="0" 
+                                                  Maximum="1024"
+                                                  Value="{Binding camParamViewModel.Radius,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="通孔大小" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <Slider Grid.Column="1" 
+                                        hc:TipElement.Visibility="Visible" 
+                                        hc:TipElement.Placement="Top" 
+                                        hc:TipElement.StringFormat="#0" 
+                                        VerticalAlignment="Center"
+                                        Minimum="0" 
+                                        Maximum="{Binding camParamViewModel.Radius,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                        Value="{Binding camParamViewModel.nMaxRadius,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+                    </TabItem>
+
+                    <TabItem Header="类型1">
+                        <StackPanel>
+
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="强度" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:NumericUpDown Grid.Column="1" 
+                                                  Minimum="0" 
+                                                  Maximum="255"
+                                                  Value="{Binding camParamViewModel.D2AdapSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="容差" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:NumericUpDown Grid.Column="1" 
+                                                  Minimum="-100" 
+                                                  Maximum="100"
+                                                  Value="{Binding camParamViewModel.D2AdapC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="面积范围" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:RangeSlider Grid.Column="1" 
+                                                hc:TipElement.Visibility="Visible" 
+                                                hc:TipElement.Placement="Top" 
+                                                hc:TipElement.StringFormat="#0" 
+                                                VerticalAlignment="Center"
+                                                Minimum="0" 
+                                                Maximum="5000"
+                                                ValueEnd="{Binding camParamViewModel.D2sizeMax,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                ValueStart="{Binding camParamViewModel.D2sizeMin,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="圆度上限" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <Slider Grid.Column="1" 
+                                        hc:TipElement.Visibility="Visible" 
+                                        hc:TipElement.Placement="Top" 
+                                        hc:TipElement.StringFormat="#0.00" 
+                                        VerticalAlignment="Center"
+                                        Minimum="0" 
+                                        Maximum="1"
+                                        Value="{Binding camParamViewModel.D2RoundnessMin,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                        </StackPanel>
+                    </TabItem>
+
+                    <TabItem Header="类型2">
+                        <StackPanel>
+
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="灰度阈值" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:NumericUpDown Grid.Column="1" 
+                                                  Minimum="0" 
+                                                  Maximum="255"
+                                                  Value="{Binding camParamViewModel.D1thresh,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <Grid Margin="2" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="面积范围" Grid.Column="0" VerticalAlignment="Center"/>
+
+                                <hc:RangeSlider Grid.Column="1" 
+                                                hc:TipElement.Visibility="Visible" 
+                                                hc:TipElement.Placement="Top" 
+                                                hc:TipElement.StringFormat="#0" 
+                                                VerticalAlignment="Center"
+                                                Minimum="0" 
+                                                Maximum="100"
+                                                ValueEnd="{Binding camParamViewModel.D1SizeMax,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                ValueStart="{Binding camParamViewModel.D1SizeMin,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Viewbox>
+</UserControl>

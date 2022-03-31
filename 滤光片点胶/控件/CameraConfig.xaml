@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="滤光片点胶.CameraConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:local="clr-namespace:滤光片点胶"
+             mc:Ignorable="d" 
+             d:DesignWidth="300"
+             Background="White">
+    <UserControl.Resources>
+        <local:CACG_Conv x:Key="CACG_Conv"/>
+    </UserControl.Resources>
+    <Viewbox>
+        <StackPanel Width="300">
+
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="相机选择" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding camParamViewModel.camInfos}"
+                          SelectedIndex="{Binding camParamViewModel.SelectedCam, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedValuePath="ID"
+                          DisplayMemberPath="Name"/>
+            </Grid>
+
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="功能选择" Grid.Column="0" VerticalAlignment="Center"/>
+
+                <ComboBox Grid.Column="1"
+                          SelectedIndex="{Binding camParamViewModel.SelectedAlg, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+                    <ComboBoxItem Content="识别算法1" />
+                    <ComboBoxItem Content="识别算法2" />
+                </ComboBox>
+            </Grid>
+
+            <hc:Divider></hc:Divider>
+
+            <local:_7175_Alg_1>
+                <local:_7175_Alg_1.Visibility>
+                    <MultiBinding Converter="{StaticResource CACG_Conv}">
+                        <Binding Path="camParamViewModel.SelectedAlg" />
+                        <Binding Path="CommboxID[0]" />
+                    </MultiBinding>
+                </local:_7175_Alg_1.Visibility>
+            </local:_7175_Alg_1>
+
+            <local:_7175_Alg_2>
+                <local:_7175_Alg_2.Visibility>
+                    <MultiBinding Converter="{StaticResource CACG_Conv}">
+                        <Binding Path="camParamViewModel.SelectedAlg" />
+                        <Binding Path="CommboxID[1]" />
+                    </MultiBinding>
+                </local:_7175_Alg_2.Visibility>
+            </local:_7175_Alg_2>
+
+        </StackPanel>
+    </Viewbox>
+</UserControl>

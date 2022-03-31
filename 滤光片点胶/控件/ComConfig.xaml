@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="滤光片点胶.ComConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:local="clr-namespace:滤光片点胶"
+             mc:Ignorable="d"  d:DesignWidth="300">
+    <Viewbox>
+        <StackPanel Width="300">
+            
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="串口号" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding SerialInfos}"
+                          SelectedIndex="{Binding SelectedSerial, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedValuePath="ID"
+                          DisplayMemberPath="Name"/>
+            </Grid>
+
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="波特率" Grid.Column="0" VerticalAlignment="Center"/>
+                <hc:NumericUpDown Grid.Column="1" Value="{Binding BaudRate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="校验位" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding ParityInfos}"
+                          SelectedIndex="{Binding SelectedParity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedValuePath="ID"
+                          DisplayMemberPath="Name"/>
+            </Grid>
+
+            <Grid Margin="2,7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="数据位" Grid.Column="0" VerticalAlignment="Center"/>
+                <Slider Grid.Column="1" 
+                        Value="{Binding DataBits,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        hc:TipElement.Visibility="Visible"  
+                        hc:TipElement.Placement="Top" 
+                        hc:TipElement.StringFormat="#0"
+                        IsSnapToTickEnabled="True"
+                        Minimum="5"
+                        Maximum="8"
+                        TickFrequency="1"
+                        TickPlacement="BottomRight"/>
+            </Grid>
+            <!--SelectedStopBits-->
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="停止位" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1"
+                          ItemsSource="{Binding StopBitsInfos}"
+                          SelectedIndex="{Binding SelectedStopBits, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          SelectedValuePath="ID"
+                          DisplayMemberPath="Name"/>
+            </Grid>
+
+
+
+        </StackPanel>
+    </Viewbox>
+</UserControl>

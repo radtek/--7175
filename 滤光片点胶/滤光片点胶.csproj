@@ -44,8 +44,17 @@
     <Reference Include="HandyControl, Version=3.3.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
       <HintPath>..\packages\HandyControl.3.3.0\lib\net461\HandyControl.dll</HintPath>
     </Reference>
+    <Reference Include="MvCameraControl.Net">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MVS\Development\DotNet\AnyCpu\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartThreadPool, Version=2.3.0.0, Culture=neutral, PublicKeyToken=1126fe8b671e8a79, processorArchitecture=MSIL">
+      <HintPath>..\packages\SmartThreadPool.dll.2.3.0\lib\net46\SmartThreadPool.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +73,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="窗口\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控件\7175_Alg_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控件\7175_Alg_1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控件\ComConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="窗口\ComWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="控件\CameraConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="窗口\ConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="控件\分屏显示\CellPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,22 +109,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="控件\HolderCtrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="控件\LensCtrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="窗口\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控件\7175_Alg_2.xaml.cs">
+      <DependentUpon>7175_Alg_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="控件\7175_Alg_1.xaml.cs">
+      <DependentUpon>7175_Alg_1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="转换器\CACG_Conv.cs" />
+    <Compile Include="控件\ComConfig.xaml.cs">
+      <DependentUpon>ComConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="窗口\ComWindow.xaml.cs">
+      <DependentUpon>ComWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="通用\MySerialPort.cs" />
+    <Compile Include="控件\CameraConfig.xaml.cs">
+      <DependentUpon>CameraConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="窗口\ConfigWindow.xaml.cs">
+      <DependentUpon>ConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="通用\CVAlgorithms.cs" />
+    <Compile Include="视图模型\CameraViewModel.cs" />
+    <Compile Include="视图模型\MainViewModel.cs" />
+    <Compile Include="通用\XmlHelper.cs" />
+    <Compile Include="通用\HiKhelper.cs" />
     <Compile Include="控件\分屏显示\CellPanel.xaml.cs">
       <DependentUpon>CellPanel.xaml</DependentUpon>
     </Compile>
@@ -95,15 +152,6 @@
       <DependentUpon>DeveloperCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="控件\分屏显示\MultiView.cs" />
-    <Compile Include="视图模型\HolderViewModel.cs" />
-    <Compile Include="视图模型\LensViewModel.cs" />
-    <Compile Include="视图模型\MainVIewModel.cs" />
-    <Compile Include="控件\HolderCtrl.xaml.cs">
-      <DependentUpon>HolderCtrl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="控件\LensCtrl.xaml.cs">
-      <DependentUpon>LensCtrl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -135,6 +183,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="图片\null.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

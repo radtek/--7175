@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace 滤光片点胶
 {
     /// <summary>
-    /// LensCtrl.xaml 的交互逻辑
+    /// _7175_Alg_1.xaml 的交互逻辑
     /// </summary>
-    public partial class LensCtrl : UserControl
+    public partial class _7175_Alg_1 : UserControl
     {
-        public LensCtrl()
+        public _7175_Alg_1()
         {
             InitializeComponent();
         }

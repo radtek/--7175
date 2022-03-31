@@ -1,0 +1,5 @@
+LIBRARY DLL4CS
+EXPORTS
+
+MV_EntryPoint @1
+MV_Release @2

@@ -20,20 +20,30 @@ namespace 滤光片点胶
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel MainVM;
+
         public MainWindow()
         {
             InitializeComponent();
 
+
+           
+
+
             Loaded += (s, e) =>
             {
                 grid.Tag = 1;
-                MultiView.InitGrid(grid, 3);
+                MultiView.InitGrid(grid, 2);
+                MultiView.SetCurrentModel(2);
 
-                MultiView.SetCurrentModel(3);
+                Run run = new Run("[控制台输出]\n");
+                Console.Inlines.Add(run);
+                run.Foreground = new SolidColorBrush(Colors.White);
+                MySerialPort.OriginalTextBlock = Console;
+                
 
-                //mainVM = new MainViewModel();
-
-                //this.DataContext = mainVM;
+                MainVM = new MainViewModel();
+                this.DataContext = MainVM;
             };
         }
     }

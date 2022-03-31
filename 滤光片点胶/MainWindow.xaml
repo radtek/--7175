@@ -7,16 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStyle="None"
+        ResizeMode="NoResize"
         WindowState="Maximized"
         Height="450" 
         Width="800">
+    <Window.Resources>
+        <ContextMenu x:Key="ContextMenu">
+            <MenuItem Header="变更触发模式" 
+                      Command="{Binding ModeSwitchCommand}"
+                      Visibility="{Binding ShowButton,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+            <!--<Separator></Separator>-->
+        </ContextMenu>
+    </Window.Resources>
+    
     <Viewbox>
         <DockPanel Height="450" Width="800">
             <local:DeveloperCtrl DockPanel.Dock="Right" Width="200"/>
 
-            <TextBlock DockPanel.Dock="Bottom" Background="Gray" Height="100" Margin="5"/>
+            <ScrollViewer Height="100"
+                          Margin="5"
+                          DockPanel.Dock="Bottom"
+                          VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="Console" 
+                       Background="Gray"/>
+            </ScrollViewer>
 
-            <Grid x:Name="grid" Margin="5" Tag="{Binding SeletedCam,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            <Grid x:Name="grid" 
+                  Margin="5" 
+                  Tag="{Binding SeletedCam,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                  ContextMenu="{StaticResource ContextMenu}"/>
         </DockPanel>
     </Viewbox>
 </Window>

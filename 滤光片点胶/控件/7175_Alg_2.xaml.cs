@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace 滤光片点胶
 {
     /// <summary>
-    /// HolderCtrl.xaml 的交互逻辑
+    /// _7175_Alg_2.xaml 的交互逻辑
     /// </summary>
-    public partial class HolderCtrl : UserControl
+    public partial class _7175_Alg_2 : UserControl
     {
-        public HolderCtrl()
+        public _7175_Alg_2()
         {
             InitializeComponent();
         }

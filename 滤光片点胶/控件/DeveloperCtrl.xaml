@@ -10,8 +10,8 @@
     <Viewbox>
         <DockPanel Width="200">
 
-            <GroupBox Header="状态栏" Margin="5" DockPanel.Dock="Top">
-                <Grid Height="60">
+            <GroupBox Header="状态栏" Margin="5" DockPanel.Dock="Top" Visibility="Collapsed">
+                <Grid Height="60" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -23,7 +23,7 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="镜筒相机" 
+                    <TextBlock Text="镜筒" 
                                FontSize="10"
                                Grid.Column="0"
                                Grid.Row="0"
@@ -51,12 +51,12 @@
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center"/>
 
-                    <ToggleButton IsChecked="False" 
-                                      IsEnabled="False"
-                              Grid.Column="0"
+                    <ToggleButton IsChecked="{Binding IsCamOn[0]}" 
+                                  IsEnabled="False"
+                                  Grid.Column="0"
                                   Grid.Row="1"
-                              Style="{StaticResource ToggleButtonCustom}" 
-                              hc:StatusSwitchElement.HideUncheckedElement="True" >
+                                  Style="{StaticResource ToggleButtonCustom}" 
+                                  hc:StatusSwitchElement.HideUncheckedElement="True" >
                         <hc:StatusSwitchElement.CheckedElement>
                             <Grid>
                                 <Ellipse Width="20" Height="20" Fill="{DynamicResource SuccessBrush}" StrokeThickness="1" Stroke="{DynamicResource SuccessBrush}"/>
@@ -69,13 +69,13 @@
                         </Grid>
                     </ToggleButton>
 
-                    <ToggleButton IsChecked="False" 
-                                      IsEnabled="False"
-                                      Focusable="False"
-                                      Grid.Column="1"
-                                      Grid.Row="1"
-                                      Style="{StaticResource ToggleButtonCustom}" 
-                                      hc:StatusSwitchElement.HideUncheckedElement="True" >
+                    <ToggleButton IsChecked="{Binding IsCamOn[1]}" 
+                                  IsEnabled="False"
+                                  Focusable="False"
+                                  Grid.Column="1"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ToggleButtonCustom}" 
+                                  hc:StatusSwitchElement.HideUncheckedElement="True" >
                         <hc:StatusSwitchElement.CheckedElement>
                             <Grid>
                                 <Ellipse Width="20" Height="20" Fill="{DynamicResource SuccessBrush}" StrokeThickness="1" Stroke="{DynamicResource SuccessBrush}"/>
@@ -88,7 +88,7 @@
                         </Grid>
                     </ToggleButton>
 
-                    <ToggleButton IsChecked="False" 
+                    <ToggleButton IsChecked="{Binding IsCamOn[2]}" 
                                       IsEnabled="False"
                                       Grid.Column="2"
                                       Grid.Row="1"
@@ -106,7 +106,7 @@
                         </Grid>
                     </ToggleButton>
 
-                    <ToggleButton IsChecked="False" 
+                    <ToggleButton IsChecked="{Binding IsCamOn[3]}" 
                                       IsEnabled="False"
                                       Grid.Column="3"
                                       Grid.Row="1"
@@ -127,18 +127,113 @@
                 </Grid>
             </GroupBox>
 
+            <GroupBox Header="状态栏" Margin="5" DockPanel.Dock="Top" Visibility="Visible">
+                <Grid Height="60" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="相机1" 
+                               FontSize="10"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+
+                    <TextBlock Text="相机2" 
+                               FontSize="10"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+
+                    <TextBlock Text="PLC" 
+                               FontSize="10"
+                               Grid.Column="3"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+
+                    <ToggleButton IsChecked="{Binding IsCamOn[0]}" 
+                                  IsEnabled="False"
+                                  Grid.Column="0"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ToggleButtonCustom}" 
+                                  hc:StatusSwitchElement.HideUncheckedElement="True" >
+                        <hc:StatusSwitchElement.CheckedElement>
+                            <Grid>
+                                <Ellipse Width="20" Height="20" Fill="{DynamicResource SuccessBrush}" StrokeThickness="1" Stroke="{DynamicResource SuccessBrush}"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource PrimaryBrush}" Panel.ZIndex="0"/>
+                            </Grid>
+                        </hc:StatusSwitchElement.CheckedElement>
+                        <Grid>
+                            <Ellipse Width="20" Height="20" Fill="{DynamicResource DangerBrush}" StrokeThickness="1" Stroke="{DynamicResource DangerBrush}" />
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource TextIconBrush}" Panel.ZIndex="0"/>
+                        </Grid>
+                    </ToggleButton>
+
+                    <ToggleButton IsChecked="{Binding IsCamOn[1]}" 
+                                  IsEnabled="False"
+                                  Focusable="False"
+                                  Grid.Column="1"
+                                  Grid.Row="1"
+                                  Style="{StaticResource ToggleButtonCustom}" 
+                                  hc:StatusSwitchElement.HideUncheckedElement="True" >
+                        <hc:StatusSwitchElement.CheckedElement>
+                            <Grid>
+                                <Ellipse Width="20" Height="20" Fill="{DynamicResource SuccessBrush}" StrokeThickness="1" Stroke="{DynamicResource SuccessBrush}"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource PrimaryBrush}" Panel.ZIndex="0"/>
+                            </Grid>
+                        </hc:StatusSwitchElement.CheckedElement>
+                        <Grid>
+                            <Ellipse Width="20" Height="20" Fill="{DynamicResource DangerBrush}" StrokeThickness="1" Stroke="{DynamicResource DangerBrush}" />
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource TextIconBrush}" Panel.ZIndex="0"/>
+                        </Grid>
+                    </ToggleButton>
+
+                    <ToggleButton IsChecked="{Binding IsCamOn[2]}" 
+                                      IsEnabled="False"
+                                      Grid.Column="2"
+                                      Grid.Row="1"
+                                      Style="{StaticResource ToggleButtonCustom}" 
+                                      hc:StatusSwitchElement.HideUncheckedElement="True" >
+                        <hc:StatusSwitchElement.CheckedElement>
+                            <Grid>
+                                <Ellipse Width="20" Height="20" Fill="{DynamicResource SuccessBrush}" StrokeThickness="1" Stroke="{DynamicResource SuccessBrush}"/>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource PrimaryBrush}" Panel.ZIndex="0"/>
+                            </Grid>
+                        </hc:StatusSwitchElement.CheckedElement>
+                        <Grid>
+                            <Ellipse Width="20" Height="20" Fill="{DynamicResource DangerBrush}" StrokeThickness="1" Stroke="{DynamicResource DangerBrush}" />
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="" Foreground="{DynamicResource TextIconBrush}" Panel.ZIndex="0"/>
+                        </Grid>
+                    </ToggleButton>
+
+                </Grid>
+            </GroupBox>
+
             <GroupBox Header="控制栏" Margin="5" DockPanel.Dock="Top">
                 <StackPanel>
-                    <Button Content="开始测试" Width="180" Margin="0,5"/>
-                    <Button Content="断开连接" Width="180" Margin="0,5"/>
-                    <Button Content="参数设置" Width="180" Margin="0,5"/>
-                    <Button Content="导出配置" Width="180" Margin="0,5"/>
-                    <Button Content="导入配置" Width="180" Margin="0,5"/>
-                    <Button Content="退出软件" Width="180" Margin="0,5"/>
+                    <Button Content="开始测试" Width="180" Margin="0,5" Command="{Binding StartCommand}"/>
+                    <Button Content="停止测试" Width="180" Margin="0,5" Command="{Binding StopCommand}"/>
+                    <Button Content="视觉设置" Width="180" Margin="0,5" Command="{Binding ConfigCommand}"/>
+                    <Button Content="通讯设置" Width="180" Margin="0,5" Command="{Binding CommunicationCommand}"/>
+                    <Button Content="导出配置" Width="180" Margin="0,5" Command="{Binding UploadCommand}"/>
+                    <Button Content="导入配置" Width="180" Margin="0,5" Command="{Binding DownloadCommand}"/>
+                    <Button Content="退出软件" Width="180" Margin="0,5" Command="{Binding ExitCommand}"/>
                 </StackPanel>
             </GroupBox>
 
-            <TextBlock Text="软件版本 0.0.0.0" Margin="0,2" TextAlignment="Center"/>
+            <TextBlock  Margin="0,2" TextAlignment="Center">
+                <Run Text="软件版本  "/>
+                <Run Text="{Binding Version}"/>
+            </TextBlock>
         </DockPanel>
     </Viewbox>
 </UserControl>

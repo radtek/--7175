@@ -26,13 +26,15 @@ namespace 滤光片点胶
         private SolidColorBrush SelectedColor = new SolidColorBrush(Colors.YellowGreen);
         private SolidColorBrush MouseEnterColor = new SolidColorBrush(Colors.Red);
         private SolidColorBrush NormalColor = new SolidColorBrush(Colors.Silver);
+
+        public CameraViewModel camera = new CameraViewModel();
         //public CamParamViewModel camParamViewModel = new CamParamViewModel();
 
         public CellPanel()
         {
             InitializeComponent();
 
-            //this.DataContext = camParamViewModel;
+            this.DataContext = camera;
             this.Selected = false;
         }
 
@@ -43,9 +45,9 @@ namespace 滤光片点胶
         public int Init(string path)
         {
             int ret = 0;
-            //camParamViewModel.CamID = Index;
+            camera.CamID = Index;
 
-            //ret += camParamViewModel.Init(path);
+            ret += camera.Init(path);
 
             return ret;
         }
